@@ -7,6 +7,7 @@
 #define wifiSerial      Serial
 
 #define ACTIVE_SIGNAL_BUZZER        1
+#define ACTIVE_SIGNAL_LED           1
 
 
 // Servo config
