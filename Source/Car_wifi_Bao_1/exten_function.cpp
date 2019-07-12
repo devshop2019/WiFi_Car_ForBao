@@ -6,9 +6,11 @@ String _buzzer, _ledLeft, _ledRight, _controller, _speed, _pin, _servo;
 
 Vietduino_Led       myBuzzer(PIN_BUZZER, ACTIVE_SIGNAL_BUZZER);
 Vietduino_DCmotor   myMotor(PIN_DIR, PIN_PWM);
-Vietduino_Servo     myServo(PIN_SERVO, SERVO_GO);
+Vietduino_Servo     myServo;
 
 CREATE_FUNCTION(RunLed){
+  myServo.begin(PIN_SERVO);
+  
   while(1){
     myBuzzer.write(100,100,4);
     myMotor.forward(255);

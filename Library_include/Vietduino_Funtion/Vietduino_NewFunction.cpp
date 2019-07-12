@@ -77,6 +77,7 @@ void Vietduino_NewFunction::enable(){
 		Enable = true;
 	}
         this->setPeriodMs(0);
+        this->setJumPoint((void *)0);
 //        Vietduino_Manager.add(this);
         p_manager->add(this);
 }

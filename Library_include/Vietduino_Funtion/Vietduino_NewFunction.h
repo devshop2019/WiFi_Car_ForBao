@@ -70,16 +70,16 @@
 #define GET_CREATE_FUNCTION(_1, _2, NAMEE, ...) NAMEE
 
 #define CREATE_FUNCTION1(FunctionName) \
-    void FunctionName##FF(Vietduino_Task * me);\
-    Vietduino_NewFunction FunctionName(FunctionName##FF);\
-    void FunctionName##FF(Vietduino_Task * me){\
+    void FunctionName##_FE(Vietduino_Task * me);\
+    Vietduino_NewFunction FunctionName(FunctionName##_FE);\
+    void FunctionName##_FE(Vietduino_Task * me){\
     M_LOOP()
 
 #define CREATE_FUNCTION2(FunctionName, pri_level) \
-    void FunctionName##FF(Vietduino_Task * me);\
-    Vietduino_NewFunction FunctionName(FunctionName##FF, \
+    void FunctionName##_FE(Vietduino_Task * me);\
+    Vietduino_NewFunction FunctionName(FunctionName##_FE, \
     (pri_level> 0)?&Vietduino_Manager_##pri_level:&Vietduino_Manager_3);\
-    void FunctionName##FF(Vietduino_Task * me){\
+    void FunctionName##_FE(Vietduino_Task * me){\
     M_LOOP()
 
 #define END_CREATE_FUNCTION  }
@@ -90,11 +90,11 @@ GET_DEFINE_FUNCTION(__VA_ARGS__, DEFINE_FUNCTION2, DEFINE_FUNCTION1)(__VA_ARGS__
 #define GET_DEFINE_FUNCTION(_1, _2, NAMEE, ...) NAMEE
 
 #define DEFINE_FUNCTION1(FunctionName) \
-    extern void FunctionName##FF(Vietduino_Task * me);\
+    extern void FunctionName##_FE(Vietduino_Task * me);\
     extern Vietduino_NewFunction FunctionName;
 
 #define DEFINE_FUNCTION2(FunctionName, pri_level) \
-    extern void FunctionName##FF(Vietduino_Task * me);\
+    extern void FunctionName##_FE(Vietduino_Task * me);\
     extern Vietduino_NewFunction FunctionName;
 /// ++++++++++++++++++++++++++++
 
@@ -123,6 +123,7 @@ class Vietduino_NewFunction : public Vietduino_Task
     bool available();
 
     void * p_currentPoint;
+    void * p_lastPoint;
     void setJumPoint(void *_myJumPoint){p_currentPoint = _myJumPoint;}
     void * getJumPoint(){return p_currentPoint;}
 

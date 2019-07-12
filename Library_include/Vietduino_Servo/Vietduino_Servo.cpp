@@ -45,26 +45,6 @@ Vietduino_Servo::Vietduino_Servo(int _pin_):
     
 }
 
-Vietduino_Servo::Vietduino_Servo(int _pin_, unsigned char _defaultAngel_):
-    Vietduino_Task(30, &Vietduino_Servo::tick){
-
-    // #if defined(DB_VIETDUINO_SERVO)
-		Serial.begin(9600);
-		DB_VIETDUINO_SERVO(F("Servo debug Start"));
-		// Serial.println(F("Servo debug Start"));
-	// #endif
-	
-	myservo = new(Servo);
-    myservo->attach(_pin_);
-    posNeed = 0;
-    pos = _defaultAngel_;
-    Servo_speed = _MIN_SPEED_VALUE_;
-    lastpos = 0;
-
-    Vietduino_Manager_3.add(this);
-    
-}
-
 Vietduino_Servo::~Vietduino_Servo(){
 
 }
@@ -146,7 +126,7 @@ void Vietduino_Servo::checkValid_Angel(unsigned char _Angle_)
 void Vietduino_Servo::tick(Vietduino_Task * me)
 {
     Vietduino_Servo *tem = (Vietduino_Servo*) me;
-    DB_VIETDUINO_SERVO(F("Servo debug tick running"));
+    
     if(tem->posNeed > tem->pos){
       tem->pos += tem->Servo_speed;
       if((tem->pos > tem->posNeed) || (tem->Servo_speed == _MAX_SPEED_VALUE_)){

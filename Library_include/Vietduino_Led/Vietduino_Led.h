@@ -29,9 +29,10 @@
 #include "Vietduino_Io.h"
 #include "Vietduino_Task.h"
 
-#define STATE_OFF  0
-#define STATE_ON   1
-#define STATE_WAIT 2
+#define STATE_OFF                       (0)
+#define STATE_ON                        (1)
+#define STATE_WAIT                      (2)
+#define VLED_CHECK_VALID_TIME(value)    min(4294967, value)
 
 class Vietduino_Led : public Vietduino_Task
 {

@@ -28,14 +28,6 @@
 #include "Vietduino_Task.h"
 #include <Servo.h>
 
-#define EN_DB_VIETDUINO_SERVO
-
-#if defined(DB_VIETDUINO_SERVO)
-	#define DB_VIETDUINO_SERVO(...)     Serial.println(__VA_ARGS__)
-#else
-	#define DB_VIETDUINO_SERVO(...)
-#endif
-
 #define _VIETDUINI_SERVO_VER        2.0
 #define _VIETDUINO_SERVO_DATE       270618
 
@@ -57,7 +49,6 @@ public:
   // ----- Constructor -----
     Vietduino_Servo();
     Vietduino_Servo(int _pin_);
-	Vietduino_Servo(int _pin_, unsigned char _defaultAngel_);
     virtual ~Vietduino_Servo();
 
     void begin(int pin);

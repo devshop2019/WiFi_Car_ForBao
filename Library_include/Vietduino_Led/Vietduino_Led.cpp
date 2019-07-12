@@ -105,10 +105,10 @@ bool Vietduino_Led::isRunning(){
 
 void Vietduino_Led::write(unsigned long _ton_, unsigned long _toff_, byte _count_, unsigned long _delay_){ // unit ms.
     this->stop();
-    this->onUs = _ton_ * 1000;
-    this->offUs = _toff_ * 1000;
+    this->onUs = VLED_CHECK_VALID_TIME(_ton_) * 1000;
+    this->offUs = VLED_CHECK_VALID_TIME(_toff_) * 1000;
     this->count = _count_;
-    this->delayUs = _delay_ * 1000;
+    this->delayUs = VLED_CHECK_VALID_TIME(_delay_) * 1000;
 
     this->start();
 }
